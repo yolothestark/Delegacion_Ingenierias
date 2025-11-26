@@ -1,6 +1,8 @@
 <?php
     // Sube 2 niveles para conexión MongoDB
     include '../../includes/db_connect_mongo.php';
+    
+    // Incluimos el header del panel
     include '../layouts/header.php'; 
 ?>
 
@@ -11,6 +13,7 @@
     </a>
 </div>
 
+<!-- Bloque de Feedback (Mensajes de éxito/error) -->
 <?php if (isset($_GET['status'])): ?>
     <div style="margin-bottom: 15px; padding: 10px; border-radius: 5px; background-color: #f0f0f0; border-left: 5px solid #333;">
         <?php 
@@ -43,45 +46,45 @@
                 // Ordenar por fecha_subida DESC (lo más nuevo primero) -> -1
                 $opciones = ['sort' => ['fecha_subida' => -1]];
                 
-                $cursor = $db->documentos->find([], $opciones);
-                $lista_docs = $cursor->toArray();
+                try {
+                    $cursor = $db->documentos->find([], $opciones);
+                    $lista_docs = $cursor->toArray();
 
-                if (count($lista_docs) > 0) {
-                    foreach($lista_docs as $doc) {
-                        
-                        // 1. Procesar ID
-                        $id_str = (string)$doc['_id'];
+                    if (count($lista_docs) > 0) {
+                        foreach($lista_docs as $doc) {
+                            
+                            // 1. Procesar ID
+                            $id_str = (string)$doc['_id'];
 
-                        // 2. Procesar Datos Embebidos (Tipo)
-                        // Buscamos en ['tipo_documento']['nombre'], si no existe ponemos N/A
-                        $nombre_tipo = $doc['tipo_documento']['nombre'] ?? 'N/A';
+                            // 2. Procesar Datos (Con protección ??)
+                            // Si el campo no existe en la BD, usamos un valor por defecto
+                            $nombre_doc  = $doc['nombre_documento'] ?? 'Sin Nombre';
+                            $nombre_tipo = $doc['tipo_documento']['nombre'] ?? 'N/A';
+                            $version     = $doc['version'] ?? '1.0';
 
-                        // 3. Procesar Fecha
-                        // MongoDB devuelve un objeto UTCDateTime, hay que convertirlo a DateTime de PHP
-                        $fecha_formateada = "Fecha inválida";
-                        if (isset($doc['fecha_subida'])) {
-                            if ($doc['fecha_subida'] instanceof MongoDB\BSON\UTCDateTime) {
-                                $dt = $doc['fecha_subida']->toDateTime();
-                                // Ajustar a zona horaria local si es necesario, ej: America/Mexico_City
-                                // $dt->setTimezone(new DateTimeZone('America/Mexico_City'));
-                                $fecha_formateada = $dt->format('d/m/Y H:i');
-                            } else {
-                                // Si por error se guardó como string
-                                $fecha_formateada = $doc['fecha_subida'];
+                            // 3. Procesar Fecha
+                            $fecha_formateada = "Fecha inválida";
+                            if (isset($doc['fecha_subida'])) {
+                                if ($doc['fecha_subida'] instanceof MongoDB\BSON\UTCDateTime) {
+                                    $dt = $doc['fecha_subida']->toDateTime();
+                                    $fecha_formateada = $dt->format('d/m/Y H:i');
+                                } else {
+                                    $fecha_formateada = $doc['fecha_subida'];
+                                }
                             }
-                        }
             ?>
                         <tr>
+                            <!-- Mostramos ID corto visualmente -->
                             <td title="<?php echo $id_str; ?>">
                                 <?php echo substr($id_str, -6); ?>...
                             </td>
-                            <td><?php echo htmlspecialchars($doc['nombre_documento']); ?></td>
+                            <td><?php echo htmlspecialchars($nombre_doc); ?></td>
                             <td><?php echo htmlspecialchars($nombre_tipo); ?></td>
-                            <td><?php echo htmlspecialchars($doc['version'] ?? 'N/A'); ?></td>
+                            <td><?php echo htmlspecialchars($version); ?></td>
                             <td><?php echo $fecha_formateada; ?></td>
                             <td class="acciones">
                                 <a href="editar_documento.php?id=<?php echo $id_str; ?>" class="btn-editar">Editar</a>
-                                <a href="borrar_documentos.php?id=<?php echo $id_str; ?>" 
+                                <a href="borrar_documento.php?id=<?php echo $id_str; ?>" 
                                    class="btn-borrar" 
                                    onclick="return confirm('¿Estás seguro de que quieres borrar este documento?');">
                                    Borrar
@@ -89,14 +92,17 @@
                             </td>
                         </tr>
             <?php
-                    } // Fin del foreach
-                } else {
+                        } // Fin del foreach
+                    } else {
             ?>
-                    <tr>
-                        <td colspan="6" style="text-align:center; padding: 20px;">No hay documentos para mostrar. Sube uno nuevo.</td>
-                    </tr>
+                        <tr>
+                            <td colspan="6" style="text-align:center; padding: 20px;">No hay documentos para mostrar. Sube uno nuevo.</td>
+                        </tr>
             <?php
-                } 
+                    } 
+                } catch (Exception $e) {
+                    echo "<tr><td colspan='6'>Error al cargar documentos: " . $e->getMessage() . "</td></tr>";
+                }
             ?>
         </tbody>
     </table>
