@@ -18,6 +18,10 @@ RUN a2enmod rewrite
 # 3. Copiar los archivos de tu proyecto al servidor
 COPY . /var/www/html/
 
+# --- NUEVA LÍNEA: Copiar configuración personalizada de PHP ---
+# Esta es la línea que aumenta el límite de subida a 64MB
+COPY uploads.ini /usr/local/etc/php/conf.d/uploads.ini
+
 # 4. Instalar Composer (Gestor de paquetes PHP)
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
