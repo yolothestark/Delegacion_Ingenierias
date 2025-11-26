@@ -3,7 +3,7 @@
     "description": "Panel de Administración Delegación Ingenierías",
     "require": {
         "php": "^8.1",
-        "mongodb/mongodb": "^1.16"
+        "mongodb/mongodb": "*"
     },
     "autoload": {
         "psr-4": {
