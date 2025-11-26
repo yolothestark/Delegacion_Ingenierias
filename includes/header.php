@@ -32,12 +32,12 @@ $ruta_base = "/Delegacion_ingenierias";
     <nav class="main-nav">
         <ul>
             <li><a href="<?php echo $ruta_base; ?>/index.php">Inicio</a></li>
-            <li><a href="<?php echo $ruta_base; ?>/Modulos/noticias_lista.php">Noticias</a></li>
-            <li><a href="<?php echo $ruta_base; ?>/Modulos/directorio.php">Directorio</a></li>
-            <li><a href="<?php echo $ruta_base; ?>/Modulos/documentos.php">Normatividad</a></li>
-            <li><a href="<?php echo $ruta_base; ?>/Modulos/mision.php">Misión</a></li>
-            <li><a href="<?php echo $ruta_base; ?>/Modulos/contacto.php">Contacto</a></li>
-            <li><a href="<?php echo $ruta_base; ?>/Modulos/soporte.php">Soporte</a></li>
+            <li><a href="<?php echo $ruta_base; ?>/modulos/noticias_lista.php">Noticias</a></li>
+            <li><a href="<?php echo $ruta_base; ?>/modulos/directorio.php">Directorio</a></li>
+            <li><a href="<?php echo $ruta_base; ?>/modulos/documentos.php">Normatividad</a></li>
+            <li><a href="<?php echo $ruta_base; ?>/modulos/mision.php">Misión</a></li>
+            <li><a href="<?php echo $ruta_base; ?>/modulos/contacto.php">Contacto</a></li>
+            <li><a href="<?php echo $ruta_base; ?>/modulos/soporte.php">Soporte</a></li>
         </ul>
     </nav>
     

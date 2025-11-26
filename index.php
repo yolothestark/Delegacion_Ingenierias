@@ -9,7 +9,7 @@
     // Nota: Como index.php está en la raíz, la ruta a layouts es 'layouts/header.php'
     // Pero según tu estructura anterior, el header busca CSS en '/Delegacion_ingenierias/css/' 
     // así que debería funcionar bien.
-    include 'layouts/header.php';
+    include 'includes/header.php';
 ?>
 
     <main>
@@ -127,5 +127,5 @@
 
     <?php
         // Incluimos el footer (layouts)
-        include 'layouts/footer.php';
+        include 'includes/footer.php';
     ?>
