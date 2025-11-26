@@ -1,7 +1,7 @@
 <?php
     // 1. Incluimos la conexión a MongoDB (ajustamos ruta para salir de Modulos)
     include '../includes/db_connect_mongo.php';
-    include '../includes/header.php';
+    
 
     // Inicializamos variables
     $noticia = null;
@@ -38,7 +38,7 @@
     }
 
     // 3. Incluimos el header (que define $ruta_base y <head>)
-    include '../layouts/header.php';
+    include '../includes/header.php';
 ?>
 
     <main class="container-detalle">

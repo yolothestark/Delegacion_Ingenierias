@@ -2,7 +2,7 @@
     // 1. Incluimos la conexión a MongoDB
     // Ajusta la ruta si es necesario (aquí asumo que estamos en /Modulos/)
     include '../includes/db_connect_mongo.php';
-    include '../includes/header.php';
+    
     
     $titulo_pagina = "Contacto - Delegación Ingenierías";
     $mensaje_exito = "";
@@ -53,7 +53,7 @@
     
     // 3. Header
     // Ajustado a la carpeta layouts según la estructura migrada
-    include '../layouts/header.php';
+    include '../includes/header.php';
 ?>
 
 <style>
