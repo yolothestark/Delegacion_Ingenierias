@@ -1,0 +1,343 @@
+/* --- Reseteo básico y fuentes --- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+h1, h2, h3, p {
+    margin: 0;
+}
+
+/* ========================================= */
+/* --- ENCABEZADO (Header) TIPO CUT CENTRADO --- */
+/* ========================================= */
+
+.main-header {
+    display: flex;
+    /* Esto centra los elementos hijos (el logo-container) horizontalmente */
+    justify-content: center; 
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    position: relative; /* Necesario para que el botón admin se posicione respecto a esto */
+    flex-wrap: wrap;
+}
+
+/* 1. Logo y Título (Centro) */
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Asegura centrado interno */
+    gap: 15px;
+    /* CLAVE: Quitamos 'flex: 1' y margin-right auto. 
+       Ahora solo ocupa lo que mide su contenido. */
+    flex: initial; 
+    margin: 0 auto; /* Refuerzo para centrar */
+    text-align: center;
+}
+
+.logo {
+    height: 70px; 
+    width: auto;
+    display: block; /* Previene espacios extra */
+}
+
+.logo-container h1 {
+    font-size: 1.8em;
+    color: #004a99;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1;
+    /* CLAVE: Mantiene el texto en una sola línea */
+    white-space: nowrap; 
+}
+
+/* 2. Botón de Admin (Derecha Absoluta) */
+.admin-access {
+    /* Lo sacamos del flujo para que no empuje al logo */
+    position: absolute;
+    right: 40px;
+    /* Ajustamos la posición verticalmente */
+    top: 35px; 
+    z-index: 10;
+}
+
+.admin-access a {
+    text-decoration: none;
+    background-color: #004a99;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+.admin-access a:hover {
+    background-color: #003366;
+}
+
+/* 3. Menú de Navegación (Fila Inferior) */
+.main-nav {
+    width: 100%;
+    order: 3; /* Se va abajo */
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #f0f0f0;
+    text-align: center; /* Asegura que el contenido inline se centre */
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content: center; /* Centra los botones del menú */
+    gap: 40px;
+    flex-wrap: wrap; /* Permite que bajen si la pantalla es muy chica */
+}
+
+.main-nav li a {
+    text-decoration: none;
+    color: #444;
+    font-weight: 600;
+    font-size: 1.1em;
+    padding: 5px 0;
+    display: block;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.main-nav li a:hover, 
+.main-nav li a.active {
+    color: #004a99;
+}
+
+/* Efecto subrayado */
+.main-nav li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -5px;
+    left: 0;
+    background-color: #fdb813;
+    transition: width 0.3s;
+}
+
+.main-nav li a:hover::after,
+.main-nav li a.active::after {
+    width: 100%;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+    /* En tablets/móviles, quitamos la posición absoluta para evitar desastres */
+    .main-header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    .admin-access {
+        position: static; /* Vuelve al flujo normal */
+        margin-top: 10px;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .admin-access a {
+        display: inline-block; 
+    }
+    
+    .logo-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .logo-container h1 {
+        white-space: normal; /* Permitir salto de línea en móvil */
+        font-size: 1.4em;
+    }
+    
+    .main-nav ul {
+        gap: 15px;
+    }
+}
+
+/* ========================================= */
+/* --- RESTO DEL CSS (Sin cambios) --- */
+/* ========================================= */
+
+/* --- Banner Principal --- */
+.banner-principal {
+    background-color: #004a99; 
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+    background-image: url('../imagenes/banner.jpg'); 
+    background-size: cover; 
+    background-position: center center;
+    background-blend-mode: multiply; 
+}
+
+.banner-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+.banner-content p {
+    font-size: 1.2em;
+    margin-bottom: 25px;
+}
+
+.btn-principal {
+    background-color: #fdb813; 
+    color: #333;
+    padding: 12px 25px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+.btn-principal:hover {
+    background-color: #e4a60b;
+}
+
+/* --- Sección de Noticias --- */
+.seccion-noticias {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.seccion-noticias h2 {
+    font-size: 2em;
+    color: #004a99;
+    border-bottom: 2px solid #fdb813;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+.noticias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.noticia-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+}
+.noticia-card:hover {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.noticia-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content .categoria {
+    display: inline-block;
+    background-color: #f0f0f0;
+    color: #555;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    margin-bottom: 10px;
+}
+
+.card-content h3 {
+    font-size: 1.3em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.card-content h3 a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.2s ease;
+}
+.card-content h3 a:hover {
+    color: #004a99;
+}
+
+.card-content p {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.card-content .fecha {
+    font-size: 0.8em;
+    color: #999;
+}
+
+/* --- Paginación --- */
+.paginacion {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.paginacion a {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 0 4px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    color: #004a99;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.paginacion a:hover {
+    background-color: #f0f0f0;
+}
+
+.paginacion a.active {
+    background-color: #004a99;
+    color: white;
+    border-color: #004a99;
+}
+
+/* --- Pie de Página --- */
+.main-footer {
+    background-color: #333;
+    color: #ccc;
+    padding: 20px 40px;
+    text-align: center;
+    margin-top: 40px;
+    background-image: url('../imagenes/textura-oscura.png');
+    background-repeat: repeat;
+}
+
+.main-footer .social-links {
+    margin-top: 10px;
+}
+.main-footer .social-links a {
+    color: #ccc;
+    text-decoration: none;
+    margin: 0 10px;
+}
+.main-footer .social-links a:hover {
+    color: #fff;
+}

@@ -1,0 +1,389 @@
+/* ============================================= */
+/* --- 1. ESTILOS PÁGINA DE LOGIN --- */
+/* ============================================= */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    color: #333;
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+    margin: 10vh auto; /* Centrado vertical relativo */
+}
+
+.login-container h2 {
+    text-align: center;
+    color: #004a99;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+.input-group {
+    margin-bottom: 1.25rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+    font-weight: bold;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #004a99;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-login:hover {
+    background-color: #003a7a;
+}
+
+.btn-regresar {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #888;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+.btn-regresar:hover {
+    color: #333;
+    text-decoration: underline;
+}
+
+/* --- Alertas y Errores --- */
+.error-box {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #c62828;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* ============================================= */
+/* --- 2. ESTRUCTURA DEL PANEL DE ADMIN --- */
+/* ============================================= */
+
+.admin-panel { 
+    width: 90%;
+    max-width: 1200px; 
+    margin: 20px auto; 
+    padding: 20px; 
+    background: #fff; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+}
+
+.admin-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    border-bottom: 2px solid #eee; 
+    padding-bottom: 15px; 
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.admin-header h1 { 
+    color: #004a99; 
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+/* Botón Salir */
+.btn-logout { 
+    background-color: #d9534f; 
+    color: white; 
+    text-decoration: none; 
+    padding: 8px 15px; 
+    border-radius: 5px; 
+    margin-left: 15px; 
+    font-weight: bold;
+    font-size: 0.9em;
+}
+.btn-logout:hover { 
+    background-color: #c9302c; 
+}
+
+/* Menú de Navegación Admin */
+.admin-nav { 
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.admin-nav a { 
+    display: inline-block; 
+    padding: 10px 15px; 
+    background: #e9ecef; 
+    color: #333; 
+    text-decoration: none; 
+    border-radius: 5px; 
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.admin-nav a.active { 
+    background: #004a99; 
+    color: white; 
+}
+
+.admin-nav a:hover:not(.active) { 
+    background: #dee2e6; 
+}
+
+.admin-content { 
+    padding-top: 30px; 
+}
+
+/* ============================================= */
+/* --- 3. TABLAS DE GESTIÓN --- */
+/* ============================================= */
+
+.header-listado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.header-listado h2 {
+    margin: 0;
+    color: #333;
+}
+
+.btn-crear {
+    background-color: #5cb85c;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.btn-crear:hover {
+    background-color: #4cae4c;
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    min-width: 600px; /* Evita que se aplaste mucho */
+}
+
+.admin-table th, .admin-table td {
+    border-bottom: 1px solid #eee;
+    padding: 15px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.admin-table th {
+    background-color: #f1f1f1;
+    font-weight: bold;
+    color: #555;
+}
+
+.admin-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Botones de Acción en Tabla */
+.acciones {
+    white-space: nowrap;
+}
+
+.btn-editar, .btn-borrar {
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: white;
+    margin-right: 5px;
+    display: inline-block;
+}
+
+.btn-editar {
+    background-color: #f0ad4e;
+}
+.btn-editar:hover {
+    background-color: #ec971f;
+}
+
+.btn-borrar {
+    background-color: #d9534f;
+}
+.btn-borrar:hover {
+    background-color: #c9302c;
+}
+
+/* ============================================= */
+/* --- 4. FORMULARIOS DE ADMIN --- */
+/* ============================================= */
+
+.admin-form {
+    max-width: 800px;
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.admin-form .input-group label {
+    color: #333;
+}
+
+.admin-form .input-group input[type="text"],
+.admin-form .input-group input[type="email"],
+.admin-form .input-group input[type="password"],
+.admin-form .input-group input[type="tel"],
+.admin-form .input-group input[type="number"],
+.admin-form .input-group textarea,
+.admin-form .input-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    font-family: inherit;
+}
+
+.admin-form .input-group textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+.btn-guardar {
+    background-color: #004a99;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.btn-guardar:hover {
+    background-color: #003a7a;
+}
+
+/* ============================================= */
+/* --- 5. ESTADÍSTICAS DASHBOARD (Nuevo) --- */
+/* ============================================= */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.stat-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 25px 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.stat-number {
+    font-size: 3.5em;
+    font-weight: 800;
+    color: #004a99;
+    margin-bottom: 5px;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.stat-link {
+    display: inline-block;
+    text-decoration: none;
+    color: #004a99;
+    font-weight: bold;
+    font-size: 0.9em;
+    border: 1px solid #004a99;
+    padding: 8px 15px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.stat-link:hover {
+    background-color: #004a99;
+    color: white;
+}
+
+/* Estilo para Alertas (Tickets Pendientes) */
+.card-warning {
+    border-color: #f8d7da;
+    background-color: #fff5f5;
+}
+
+.card-warning .stat-number {
+    color: #d9534f;
+}
+
+.card-warning .stat-label {
+    color: #a94442;
+}
+
+.card-warning .stat-link {
+    color: #d9534f;
+    border-color: #d9534f;
+}
+
+.card-warning .stat-link:hover {
+    background-color: #d9534f;
+    color: white;
+}

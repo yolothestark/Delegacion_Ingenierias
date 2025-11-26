@@ -1,0 +1,485 @@
+/* Estilos para modules/noticia_detalle.php */
+
+.container-detalle {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px 40px; /* Más padding lateral */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.noticia-completa .info-superior {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap; /* Para responsive */
+}
+
+.categoria-detalle {
+    background-color: #004a99;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.fecha-detalle {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 5px; /* Para responsive */
+}
+
+.noticia-completa h1 {
+    font-size: 2.2em;
+    color: #333;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.imagen-detalle {
+    width: 100%;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    border: 1px solid #eee;
+}
+
+.contenido-completo {
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: #444;
+}
+
+.info-autor {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    font-size: 1em;
+    color: #555;
+    font-style: italic;
+}
+
+.error-titulo {
+    color: #D9534F;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* ============================================= */
+/* --- Estilos Específicos para Misión y Visión --- */
+/* ============================================= */
+
+.mision-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.mision-subtitle {
+    font-size: 1.2em;
+    color: #666;
+}
+
+.mision-divider {
+    width: 100px;
+    border: 2px solid #fdb813; /* Amarillo corporativo */
+    margin: 20px auto;
+}
+
+/* Contenedor flexible para Misión y Visión */
+.mision-section {
+    margin-bottom: 50px;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Clase especial para invertir el orden visual en Visión */
+.vision-section {
+    flex-direction: row-reverse;
+}
+
+.mision-text-col, 
+.mision-img-col {
+    flex: 1;
+    min-width: 300px; /* Para que se apilen en móviles */
+}
+
+.mision-title {
+    color: #004a99; /* Azul corporativo */
+    border-bottom: none; /* Quitamos el borde por defecto de los h2 */
+    margin-bottom: 15px;
+}
+
+.center-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.mision-desc {
+    line-height: 1.8;
+    text-align: justify;
+    color: #444;
+}
+
+.mision-img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Sección de Valores */
+.valores-section {
+    background-color: #f9f9f9;
+    padding: 40px;
+    border-radius: 8px;
+}
+
+.valores-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    text-align: center;
+}
+
+.valor-item h3 {
+    color: #004a99;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+}
+
+.valor-item p {
+    font-size: 0.95em;
+    color: #666;
+}
+
+/* ============================================= */
+/* --- ESTILOS PÁGINA DE CONTACTO (Diseño Exacto) --- */
+/* ============================================= */
+
+.contacto-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px; /* Espacio amplio entre columnas */
+    margin-top: 40px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente limpia */
+}
+
+/* --- Columna Izquierda (Información) --- */
+.columna-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.titulo-contacto {
+    font-size: 3.5em; /* Título grande */
+    color: #002f55; /* Azul oscuro muy profundo (tipo UDG) */
+    font-weight: 800; /* Muy negrita */
+    margin-bottom: 50px;
+    margin-top: 0;
+    letter-spacing: -1px;
+}
+
+.item-contacto {
+    display: flex;
+    margin-bottom: 35px;
+    align-items: flex-start;
+}
+
+.icono {
+    width: 35px;
+    margin-right: 20px;
+    padding-top: 5px; 
+}
+/* Hacemos los iconos del mismo azul oscuro */
+.icono svg {
+    stroke: #002f55; 
+}
+
+.texto-info p {
+    margin: 0 0 3px 0;
+    color: #002f55; /* Texto azul oscuro */
+    font-size: 1.15em;
+    line-height: 1.4;
+}
+
+.texto-info a {
+    color: #002f55;
+    text-decoration: none;
+}
+
+.subtitulo-info {
+    margin: 0 0 10px 0;
+    font-size: 1.1em;
+    font-weight: 800;
+    color: #002f55;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- Columna Derecha (Formulario) --- */
+.columna-form {
+    flex: 1.2;
+    min-width: 300px;
+    padding-top: 15px;
+}
+
+.fila-doble {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.fila-doble .campo {
+    flex: 1;
+}
+
+.campo {
+    margin-bottom: 25px;
+}
+
+.campo label {
+    display: block;
+    color: #002f55; /* Label azul */
+    margin-bottom: 8px;
+    font-size: 1em;
+}
+
+.campo input, 
+.campo textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #002f55; /* Borde azul oscuro definido */
+    font-size: 1em;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.campo textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.boton-container {
+    text-align: right; /* Botón alineado a la derecha */
+    margin-top: 10px;
+}
+
+.btn-enviar-rojo {
+    background-color: #a6192e; /* Rojo quemado / Tinto */
+    color: white;
+    border: none;
+    padding: 12px 50px; /* Botón ancho */
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-enviar-rojo:hover {
+    background-color: #851425; /* Tinto más oscuro al pasar mouse */
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .fila-doble {
+        flex-direction: column;
+        gap: 0;
+    }
+    .contacto-wrapper {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .titulo-contacto {
+        font-size: 2.5em;
+        text-align: center;
+    }
+}
+
+/* ================================================= */
+/* --- ESTILOS DOCUMENTOS (Diseño Réplica) --- */
+/* ================================================= */
+
+.docs-container-fluid {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+.split-layout {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 80vh; /* Ocupa buen alto de pantalla */
+}
+
+/* --- COLUMNA IZQUIERDA (Verde Azulado) --- */
+.panel-izquierdo {
+    flex: 0 0 45%; /* Aprox. 45% del ancho */
+    background-color: #004a99; /* Color exacto de la imagen */
+    color: white;
+    padding: 60px 50px;
+    box-sizing: border-box;
+}
+
+.doc-card-izq {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 40px; /* Espacio entre items */
+}
+
+/* El icono cuadrado blanco con PDF rojo */
+.icono-pdf-box {
+    background-color: white;
+    width: 55px;
+    height: 65px;
+    border-radius: 5px;
+    margin-right: 25px;
+    flex-shrink: 0;
+    position: relative;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px; /* Espacio para la etiqueta roja */
+}
+
+.icono-pdf-box svg {
+    width: 35px;
+    height: 35px;
+}
+
+/* La etiqueta roja "PDF" arriba del icono */
+.pdf-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #e53935; /* Rojo PDF */
+    color: white;
+    font-size: 9px;
+    font-weight: bold;
+    text-align: left;
+    padding: 3px 6px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    text-transform: uppercase;
+}
+
+.info-doc-izq h3 {
+    color: white;
+    font-size: 1.5em;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    line-height: 1.2;
+}
+
+.version-text {
+    display: block;
+    font-size: 0.9em;
+    opacity: 0.8;
+    margin-bottom: 5px;
+}
+
+.link-descarga-izq {
+    color: white;
+    text-decoration: underline;
+    font-size: 1em;
+    opacity: 0.9;
+}
+.link-descarga-izq:hover {
+    opacity: 1;
+}
+
+
+/* --- COLUMNA DERECHA (Blanca) --- */
+.panel-derecho {
+    flex: 1; /* Ocupa el resto del espacio */
+    background-color: white;
+    padding: 60px 50px;
+    box-sizing: border-box;
+}
+
+.doc-item-der {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+
+/* Icono PDF pequeño rojo */
+.icono-pdf-mini {
+    background-color: #e53935; /* Fondo rojo */
+    width: 35px;
+    height: 45px;
+    border-radius: 3px;
+    margin-right: 15px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+/* Etiqueta PDF pequeña (pseudo-elemento) */
+.icono-pdf-mini::before {
+    content: "PDF";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.1);
+    color: white;
+    font-size: 7px;
+    padding: 2px 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+.icono-pdf-mini svg {
+    width: 20px;
+    height: 20px;
+    stroke: white; /* Icono blanco sobre fondo rojo */
+    margin-top: 8px;
+}
+
+.info-doc-der {
+    display: flex;
+    flex-direction: column;
+}
+
+.link-titulo-der {
+    font-size: 1.1em;
+    color: #002f55; /* Azul oscuro institucional */
+    text-decoration: underline;
+    font-weight: 700;
+    margin-bottom: 5px;
+    line-height: 1.3;
+}
+.link-titulo-der:hover {
+    color: #0056a3;
+    text-decoration: none;
+}
+
+.link-descarga-der {
+    color: #002f55;
+    font-size: 0.9em;
+    text-decoration: underline;
+}
+
+.separador {
+    border-top: 1px solid #eee;
+    margin: 30px 0;
+}
+
+/* Responsive: Apilar columnas en celulares */
+@media (max-width: 900px) {
+    .split-layout {
+        flex-direction: column;
+    }
+    .panel-izquierdo, .panel-derecho {
+        flex: 100%;
+        width: 100%;
+    }
+}

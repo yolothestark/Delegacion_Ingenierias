@@ -1,0 +1,415 @@
+/* --- Reseteo básico y fuentes --- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+h1, h2, h3, p {
+    margin: 0;
+}
+
+/* ========================================= */
+/* --- ENCABEZADO (Header) TIPO CUT CENTRADO --- */
+/* ========================================= */
+
+.main-header {
+    display: flex;
+    /* Esto centra los elementos hijos (el logo-container) horizontalmente */
+    justify-content: center; 
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    position: relative; /* Necesario para que el botón admin se posicione respecto a esto */
+    flex-wrap: wrap;
+}
+
+/* 1. Logo y Título (Centro) */
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Asegura centrado interno */
+    gap: 15px;
+    /* CLAVE: Quitamos 'flex: 1' y margin-right auto. 
+       Ahora solo ocupa lo que mide su contenido. */
+    flex: initial; 
+    margin: 0 auto; /* Refuerzo para centrar */
+    text-align: center;
+}
+
+.logo {
+    height: 70px; 
+    width: auto;
+    display: block; /* Previene espacios extra */
+}
+
+.logo-container h1 {
+    font-size: 1.8em;
+    /* CAMBIO: Azul Aqua Institucional */
+    color: #009eb3;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1;
+    /* CLAVE: Mantiene el texto en una sola línea */
+    white-space: nowrap; 
+}
+
+/* 2. Botón de Admin (Derecha Absoluta) */
+.admin-access {
+    /* Lo sacamos del flujo para que no empuje al logo */
+    position: absolute;
+    right: 40px;
+    /* Ajustamos la posición verticalmente */
+    top: 35px; 
+    z-index: 10;
+}
+
+.admin-access a {
+    text-decoration: none;
+    /* CAMBIO: Fondo Aqua */
+    background-color: #009eb3;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+.admin-access a:hover {
+    /* CAMBIO: Aqua más oscuro al pasar mouse */
+    background-color: #007a8a;
+}
+
+/* 3. Menú de Navegación (Fila Inferior) */
+.main-nav {
+    width: 100%;
+    order: 3; /* Se va abajo */
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #f0f0f0;
+    text-align: center; /* Asegura que el contenido inline se centre */
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content: center; /* Centra los botones del menú */
+    gap: 40px;
+    flex-wrap: wrap; /* Permite que bajen si la pantalla es muy chica */
+}
+
+.main-nav li a {
+    text-decoration: none;
+    color: #444;
+    font-weight: 600;
+    font-size: 1.1em;
+    padding: 5px 0;
+    display: block;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.main-nav li a:hover, 
+.main-nav li a.active {
+    /* CAMBIO: Azul Aqua al pasar el mouse */
+    color: #009eb3;
+}
+
+/* Efecto subrayado */
+.main-nav li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -5px;
+    left: 0;
+    /* CAMBIO: Verde Hoja (Color de acento del logo) */
+    background-color: #6ca842;
+    transition: width 0.3s;
+}
+
+.main-nav li a:hover::after,
+.main-nav li a.active::after {
+    width: 100%;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+    /* En tablets/móviles, quitamos la posición absoluta para evitar desastres */
+    .main-header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    .admin-access {
+        position: static; /* Vuelve al flujo normal */
+        margin-top: 10px;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .admin-access a {
+        display: inline-block; 
+    }
+    
+    .logo-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .logo-container h1 {
+        white-space: normal; /* Permitir salto de línea en móvil */
+        font-size: 1.4em;
+    }
+    
+    .main-nav ul {
+        gap: 15px;
+    }
+}
+
+/* ========================================= */
+/* --- RESTO DEL CSS --- */
+/* ========================================= */
+
+/* ================================================================== */
+/* --- BANNER PRINCIPAL CON VIDEO DE FONDO --- */
+/* ================================================================== */
+
+/* 1. EL CONTENEDOR PADRE */
+.banner-principal {
+    position: relative; /* IMPORTANTE: Define los límites para los elementos absolutos internos */
+    width: 100%;
+    /* Ajusta la altura a tu gusto. 'vh' es porcentaje de la altura de la pantalla */
+    height: 70vh; 
+    min-height: 500px; /* Altura mínima de seguridad */
+    /* CAMBIO: Fondo de respaldo Aqua */
+    background-color: #009eb3; 
+    overflow: hidden; /* Si el video es más grande que la caja, lo corta */
+    
+    /* Esto centra el bloque de texto (.banner-content) vertical y horizontalmente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+/* 2. EL VIDEO MP4 (Capa inferior) */
+/* Esta clase la pusiste en tu PHP: <video class="video-background"> */
+.video-background {
+    position: absolute; /* Lo saca del flujo normal para ponerlo detrás */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* LA CLAVE: 'object-fit: cover' estira el video para llenar todo sin deformarse. 
+       Adiós a las barras negras. */
+    object-fit: cover; 
+    z-index: 1; /* El nivel más bajo */
+}
+
+/* 3. EL FILTRO OSCURO (Capa media) */
+/* Esta clase la pusiste en tu PHP: <div class="overlay"></div> */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* CAMBIO: Filtro Petrol/Azul Verdoso oscuro con transparencia */
+    background: rgba(0, 59, 70, 0.6); 
+    z-index: 2; /* Encima del video */
+}
+
+/* 4. EL TEXTO Y BOTÓN (Capa superior) */
+/* Esta clase la pusiste en tu PHP: <div class="banner-content"> */
+.banner-content {
+    position: relative; /* Necesario para que el z-index funcione */
+    z-index: 3; /* El nivel más alto, para estar encima de todo */
+    padding: 20px;
+    max-width: 900px;
+}
+
+/* Estilos del texto (con un poco de sombra para que resalte sobre el video) */
+.banner-content h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    font-weight: 800;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+
+.banner-content p {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+    line-height: 1.4;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+}
+
+/* Estilo del botón */
+.btn-principal {
+    /* CAMBIO: Botón Verde (antes amarillo) */
+    background-color: #6ca842; 
+    color: white; /* Texto blanco para mejor contraste en verde */
+    padding: 15px 35px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    border-radius: 50px; /* Bordes más redondeados */
+    transition: all 0.3s ease;
+    display: inline-block;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.btn-principal:hover {
+    /* CAMBIO: Verde más oscuro */
+    background-color: #558732;
+    transform: translateY(-3px); /* Pequeño efecto de elevación al pasar el mouse */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+/* --- Sección de Noticias --- */
+.seccion-noticias {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.seccion-noticias h2 {
+    font-size: 2em;
+    /* CAMBIO: Azul Aqua */
+    color: #009eb3;
+    /* CAMBIO: Borde inferior Verde */
+    border-bottom: 2px solid #6ca842;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+.noticias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.noticia-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+}
+.noticia-card:hover {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.noticia-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content .categoria {
+    display: inline-block;
+    background-color: #f0f0f0;
+    color: #555;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    margin-bottom: 10px;
+}
+
+.card-content h3 {
+    font-size: 1.3em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.card-content h3 a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.2s ease;
+}
+.card-content h3 a:hover {
+    /* CAMBIO: Aqua al pasar mouse */
+    color: #009eb3;
+}
+
+.card-content p {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.card-content .fecha {
+    font-size: 0.8em;
+    color: #999;
+}
+
+/* --- Paginación --- */
+.paginacion {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.paginacion a {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 0 4px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    /* CAMBIO: Texto Aqua */
+    color: #009eb3;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.paginacion a:hover {
+    background-color: #f0f0f0;
+}
+
+.paginacion a.active {
+    /* CAMBIO: Fondo Aqua */
+    background-color: #009eb3;
+    color: white;
+    border-color: #009eb3;
+}
+
+/* --- Pie de Página --- */
+.main-footer {
+    /* CAMBIO: Fondo Petrol Oscuro (coincide con el texto del logo) */
+    background-color: #003b46;
+    color: #ccc;
+    padding: 20px 40px;
+    text-align: center;
+    margin-top: 40px;
+    background-image: url('../imagenes/textura-oscura.png');
+    background-repeat: repeat;
+}
+
+.main-footer .social-links {
+    margin-top: 10px;
+}
+.main-footer .social-links a {
+    color: #ccc;
+    text-decoration: none;
+    margin: 0 10px;
+}
+.main-footer .social-links a:hover {
+    color: #fff;
+}
