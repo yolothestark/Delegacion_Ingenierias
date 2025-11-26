@@ -33,6 +33,7 @@
         <thead>
             <tr>
                 <th>ID</th>
+                <th>Estado</th> <!-- Nueva columna para depuración -->
                 <th>Nombre del Documento</th>
                 <th>Tipo</th>
                 <th>Versión</th>
@@ -57,12 +58,27 @@
                             $id_str = (string)$doc['_id'];
 
                             // 2. Procesar Datos (Con protección ??)
-                            // Si el campo no existe en la BD, usamos un valor por defecto
                             $nombre_doc  = $doc['nombre_documento'] ?? 'Sin Nombre';
                             $nombre_tipo = $doc['tipo_documento']['nombre'] ?? 'N/A';
                             $version     = $doc['version'] ?? '1.0';
+                            $ruta_archivo = $doc['ruta_archivo'] ?? '';
 
-                            // 3. Procesar Fecha
+                            // 3. VERIFICACIÓN DE ARCHIVO FÍSICO (DEPURACIÓN)
+                            $archivo_existe = false;
+                            if (!empty($ruta_archivo)) {
+                                // Construimos la ruta absoluta en el servidor
+                                // dirname(__DIR__, 2) nos lleva a la raíz del proyecto
+                                $ruta_absoluta = dirname(dirname(__DIR__)) . '/' . ltrim($ruta_archivo, '/');
+                                $archivo_existe = file_exists($ruta_absoluta);
+                            }
+
+                            // Icono de estado
+                            $icono_estado = $archivo_existe 
+                                ? '<span style="font-size: 1.2em;" title="Archivo OK">📄</span>' 
+                                : '<span style="font-size: 1.2em; cursor:help;" title="¡Alerta! El archivo PDF no se encuentra en el servidor (Posible reinicio de Render)">⚠️</span>';
+
+
+                            // 4. Procesar Fecha
                             $fecha_formateada = "Fecha inválida";
                             if (isset($doc['fecha_subida'])) {
                                 if ($doc['fecha_subida'] instanceof MongoDB\BSON\UTCDateTime) {
@@ -77,6 +93,9 @@
                             <!-- Mostramos ID corto visualmente -->
                             <td title="<?php echo $id_str; ?>">
                                 <?php echo substr($id_str, -6); ?>...
+                            </td>
+                            <td style="text-align: center;">
+                                <?php echo $icono_estado; ?>
                             </td>
                             <td><?php echo htmlspecialchars($nombre_doc); ?></td>
                             <td><?php echo htmlspecialchars($nombre_tipo); ?></td>
@@ -96,12 +115,12 @@
                     } else {
             ?>
                         <tr>
-                            <td colspan="6" style="text-align:center; padding: 20px;">No hay documentos para mostrar. Sube uno nuevo.</td>
+                            <td colspan="7" style="text-align:center; padding: 20px;">No hay documentos para mostrar. Sube uno nuevo.</td>
                         </tr>
             <?php
                     } 
                 } catch (Exception $e) {
-                    echo "<tr><td colspan='6'>Error al cargar documentos: " . $e->getMessage() . "</td></tr>";
+                    echo "<tr><td colspan='7'>Error al cargar documentos: " . $e->getMessage() . "</td></tr>";
                 }
             ?>
         </tbody>
