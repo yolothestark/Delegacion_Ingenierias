@@ -1,0 +1,7 @@
+php_value upload_max_filesize 64M
+php_value post_max_size 64M
+php_value memory_limit 128M
+
+3.  Sube estos cambios a GitHub (`git add .`, `git commit...`, `git push`).
+
+Cuando Render se actualice, podrás subir archivos de hasta **64MB** y el error debería desaparecer.

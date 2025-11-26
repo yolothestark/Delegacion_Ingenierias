@@ -15,13 +15,28 @@
 
 <!-- Bloque de Feedback (Mensajes de éxito/error) -->
 <?php if (isset($_GET['status'])): ?>
-    <div style="margin-bottom: 15px; padding: 10px; border-radius: 5px; background-color: #f0f0f0; border-left: 5px solid #333;">
+    <?php
+        // Definir estilo según si es error o éxito
+        $es_error = strpos($_GET['status'], 'error') !== false;
+        $estilo = $es_error 
+            ? "background-color: #f8d7da; border-left: 5px solid #dc3545; color: #721c24;" 
+            : "background-color: #d4edda; border-left: 5px solid #28a745; color: #155724;";
+    ?>
+    <div style="margin-bottom: 15px; padding: 15px; border-radius: 5px; <?php echo $estilo; ?>">
         <?php 
             switch($_GET['status']) {
-                case 'subido': echo "Documento subido correctamente."; break;
-                case 'editado': echo "Documento actualizado correctamente."; break;
-                case 'borrado': echo "Documento eliminado correctamente."; break;
-                case 'error_borrar': echo "Error al intentar borrar el documento."; break;
+                case 'subido': echo "✅ Documento subido correctamente."; break;
+                case 'editado': echo "✅ Documento actualizado correctamente."; break;
+                case 'borrado': echo "✅ Documento eliminado correctamente."; break;
+                
+                // Errores específicos
+                case 'error_archivo': echo "❌ Error al subir el archivo. Probablemente excede el tamaño máximo permitido (2MB)."; break;
+                case 'error_tipo': echo "❌ Error: El archivo no es un PDF válido."; break;
+                case 'error_movida': echo "❌ Error: No se pudo guardar el archivo en la carpeta (Permisos o ruta)."; break;
+                case 'error_db': echo "❌ Error al guardar en la base de datos."; break;
+                case 'error_borrar': echo "❌ Error al intentar borrar el documento."; break;
+                case 'error_excepcion': echo "❌ Ocurrió un error técnico en el servidor."; break;
+                
                 default: echo "Operación realizada.";
             }
         ?>
