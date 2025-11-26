@@ -1,6 +1,7 @@
 <?php
     // 1. Incluimos la conexión a MongoDB (ajustamos ruta para salir de Modulos)
     include '../includes/db_connect_mongo.php';
+    include '../includes/header.php';
 
     // Inicializamos variables
     $noticia = null;
@@ -109,5 +110,5 @@
 
     <?php
         // No es necesario cerrar conexión manual en Mongo/PHP
-        include '../layouts/footer.php';
+        include '../includes/footer.php';
     ?>

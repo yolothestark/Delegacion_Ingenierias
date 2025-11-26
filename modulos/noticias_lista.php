@@ -1,6 +1,7 @@
 <?php
     // 1. Incluimos la conexión a MongoDB (subimos un nivel desde Modulos/)
     include '../includes/db_connect_mongo.php';
+    include '../includes/header.php';
     
     // --- LÓGICA DE PAGINACIÓN (MONGODB) ---
     $noticias_por_pagina = 6;

@@ -5,7 +5,7 @@
     $titulo_pagina = "Documentos - Delegación Ingenierías";
     
     // 2. Header (subimos un nivel hasta layouts/)
-    include '../layouts/header.php';
+    include '../includes/header.php';
 
     $busqueda = isset($_GET['q']) ? trim($_GET['q']) : '';
 ?>
@@ -159,7 +159,7 @@
 
 <?php
     // Incluir footer
-    include '../layouts/footer.php';
+    include '../includes/footer.php';
 ?>
 <style>
     .link-titulo-izq-visor {

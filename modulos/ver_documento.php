@@ -1,6 +1,7 @@
 <?php
     // 1. Conexión a MongoDB (subimos un nivel desde Modulos/)
     include '../includes/db_connect_mongo.php';
+    include '../includes/header.php';
 
     // Inicializamos variables
     $doc = null;
@@ -115,7 +116,7 @@
 </main>
 
 <?php
-    include '../layouts/footer.php';
+    include '../includes/footer.php';
 ?>
 
 <!-- Estilos Específicos del Visor -->

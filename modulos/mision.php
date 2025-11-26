@@ -8,7 +8,7 @@
     
     // 3. Incluimos el header
     // IMPORTANTE: Ajustamos la ruta a 'layouts' según la estructura nueva
-    include '../layouts/header.php';
+    include '../includes/header.php';
 ?>
 
 <main class="container-detalle">
@@ -81,5 +81,5 @@
 <?php
     // 4. Incluimos el footer
     // IMPORTANTE: Ajustamos la ruta a 'layouts'
-    include '../layouts/footer.php';
+    include '../includes/footer.php';
 ?>

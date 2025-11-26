@@ -1,6 +1,7 @@
 <?php
     // 1. Incluimos la conexión a MongoDB (subimos un nivel desde Modulos/)
     include '../includes/db_connect_mongo.php';
+    include '../includes/header.php';
     
     $titulo_pagina = "Reportar Error - Delegación Ingenierías";
     $mensaje = "";
@@ -134,5 +135,5 @@
 
 <?php
     // 3. Incluimos el footer
-    include '../layouts/footer.php';
+    include '../includes/footer.php';
 ?>

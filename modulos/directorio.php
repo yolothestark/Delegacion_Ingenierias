@@ -8,7 +8,7 @@
     
     // 3. Incluimos el encabezado
     // Nota: Según la estructura que migramos, el header está en '../layouts/'
-    include '../layouts/header.php';
+    include '../includes/header.php';
 ?>
 
 <main class="container-detalle">
@@ -208,5 +208,5 @@
 
 <?php
     // 4. Incluimos el pie de página
-    include '../layouts/footer.php';
+    include '../includes/footer.php';
 ?>
