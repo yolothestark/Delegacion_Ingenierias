@@ -31,7 +31,7 @@
     $titulo_pagina = "Noticias - Página $pagina_actual - Delegación Ingenierías";
     
     // 8. Incluimos el encabezado
-    include '../layouts/header.php';
+    include '../includes/header.php';
 ?>
 
 <main class="container-detalle">
@@ -105,7 +105,7 @@
                     <span class="categoria"><?php echo htmlspecialchars($nombre_categoria); ?></span>
                     <h3>
                         <!-- Enlace al detalle con ID de Mongo -->
-                        <a href="<?php echo $ruta_base; ?>/Modulos/noticia_detalle.php?id=<?php echo $id_str; ?>">
+                        <a href="<?php echo $ruta_base; ?>/modulos/noticia_detalle.php?id=<?php echo $id_str; ?>">
                             <?php echo htmlspecialchars($row['titulo']); ?>
                         </a>
                     </h3>
@@ -156,5 +156,5 @@
 
 <?php
     // 10. Incluimos el pie de página
-    include '../layouts/footer.php';
+    include '../includes/footer.php';
 ?>

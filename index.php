@@ -1,12 +1,10 @@
 <?php
     // 1. Incluimos la conexión a MongoDB
-    // La carpeta real es 'includes', no 'layouts'
     include 'includes/db_connect_mongo.php';
     
     $titulo_pagina = "Inicio - Delegación Ingenierías";
 
     // 2. Incluimos el encabezado
-    // CORRECCIÓN: Cambiado 'layouts/header.php' por 'includes/header.php'
     include 'includes/header.php';
 ?>
 
@@ -20,7 +18,6 @@
             <div class="banner-content">
                 <h1>COMUNICADO IMPORTANTE</h1>
                 <p>Te invitamos a conocer nuestra misión, visión y los valores que nos definen.</p>
-                <!-- CORRECCIÓN: 'modulos' en minúscula -->
                 <a href="modulos/mision.php" class="btn-principal">Conoce nuestra Misión</a>
             </div>
         </section>
@@ -30,14 +27,12 @@
             <h2>Últimas Noticias</h2>
             <div class="noticias-grid">
                 <?php
-                    // Opciones de consulta MongoDB
                     $opciones = [
                         'sort' => ['fecha_publicacion' => -1], 
                         'limit' => 3
                     ];
 
                     try {
-                        // Intentamos la consulta solo si la conexión ($db) existe
                         if (isset($db)) {
                             $cursor = $db->noticias->find([], $opciones);
                             $noticias = $cursor->toArray();
@@ -50,9 +45,7 @@
                                     
                                     if (!empty($row['ruta_imagen'])) {
                                         $ruta_limpia = ltrim($row['ruta_imagen'], '/');
-                                        // Ruta física para comprobar
                                         if (file_exists(__DIR__ . '/' . $ruta_limpia)) {
-                                            // $ruta_base viene del header
                                             $imagen_src = $ruta_base . '/' . $ruta_limpia;
                                         }
                                     }
@@ -72,7 +65,6 @@
                     <div class="card-content">
                         <span class="categoria"><?php echo htmlspecialchars($nombre_categoria); ?></span>
                         <h3>
-                            <!-- CORRECCIÓN: 'modulos' en minúscula -->
                             <a href="modulos/noticia_detalle.php?id=<?php echo $id_str; ?>">
                                 <?php echo htmlspecialchars($row['titulo']); ?>
                             </a>
@@ -88,7 +80,10 @@
                             }
                         }
                     } catch (Exception $e) {
-                        echo "<p>Error al cargar noticias (Base de datos no disponible).</p>";
+                        // --- AQUI ESTA EL CAMBIO PARA VER EL ERROR ---
+                        echo "<div style='color: red; background: #ffe6e6; padding: 10px; border: 1px solid red; margin: 10px;'>";
+                        echo "<strong>Error de MongoDB:</strong> " . $e->getMessage();
+                        echo "</div>";
                     }
                 ?>
             </div>
@@ -96,6 +91,5 @@
     </main>
 
 <?php
-    // CORRECCIÓN: Cambiado 'layouts/footer.php' por 'includes/footer.php'
     include 'includes/footer.php';
 ?>
