@@ -2,21 +2,23 @@
 // 1. Iniciar sesión
 session_start();
 
-// Configuración de rutas
-$ruta_base_publica = "/Delegacion_ingenierias";
-$ruta_base_admin = "/Delegacion_ingenierias/admin"; 
+// Configuración de rutas INTELIGENTE
+// Detecta si es localhost (tu PC) o la nube (Render)
+$es_local = ($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == '127.0.0.1');
+$raiz = $es_local ? "/Delegacion_Ingenierias" : ""; // Sin carpeta en la nube
 
-// Incluir archivos necesarios (Rutas absolutas)
-// CAMBIO: Apuntamos al conector de MongoDB
-include dirname(__DIR__, 2) . '/includes/db_connect_mongo.php'; 
-include dirname(__DIR__) . '/auth_check.php';
+$ruta_base_publica = $raiz;       // Para ir al inicio, css, imagenes
+$ruta_base_admin   = $raiz . "/admin"; // Para enlaces internos del admin
+
+// Incluir archivos necesarios
+// Usamos __DIR__ para subir niveles de forma segura
+include_once __DIR__ . '/../../includes/db_connect_mongo.php'; 
+include_once __DIR__ . '/../auth_check.php';
 
 // Variables para el menú activo
 $pagina_actual = basename($_SERVER['PHP_SELF']);
 $carpeta_actual = basename(dirname($_SERVER['PHP_SELF']));
 
-// --- CORRECCIÓN: USAMOS TRIM() PARA QUITAR ESPACIOS INVISIBLES ---
-// Esto sigue funcionando igual, ya que $_SESSION se llena en el login
 $user_rol = isset($_SESSION['user_rol']) ? trim($_SESSION['user_rol']) : 'Viewer';
 ?>
 <!DOCTYPE html>
@@ -25,6 +27,8 @@ $user_rol = isset($_SESSION['user_rol']) ? trim($_SESSION['user_rol']) : 'Viewer
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administración</title>
+    
+    <!-- CORRECCIÓN CSS: Usamos ruta absoluta dinámica -->
     <link rel="stylesheet" href="<?php echo $ruta_base_publica; ?>/css/admin.css"> 
 </head>
 <body>
@@ -37,7 +41,7 @@ $user_rol = isset($_SESSION['user_rol']) ? trim($_SESSION['user_rol']) : 'Viewer
                 Rol: <?php echo htmlspecialchars($user_rol); ?>
             </span>
             
-            Bienvenido, <strong><?php echo htmlspecialchars($_SESSION['username']); ?></strong>
+            Bienvenido, <strong><?php echo htmlspecialchars($_SESSION['username'] ?? 'Usuario'); ?></strong>
             <a href="<?php echo $ruta_base_admin; ?>/logout.php" class="btn-logout">Salir</a>
         </div>
     </header>

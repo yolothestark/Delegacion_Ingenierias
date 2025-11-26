@@ -1,18 +1,21 @@
 <?php
 session_start();
 
-// Si el usuario YA está logueado, lo mandamos al dashboard
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-    header('Location: index.php'); // Redirige al index.php DENTRO de admin/
+    header('Location: index.php');
     exit;
 }
 
-// Comprobar si hay un mensaje de error (generado en login_proceso.php)
 $error_message = '';
 if (isset($_SESSION['error_message'])) {
     $error_message = $_SESSION['error_message'];
-    unset($_SESSION['error_message']); // Borrar el mensaje para no mostrarlo de nuevo
+    unset($_SESSION['error_message']);
 }
+
+// Detectar ruta base para el CSS y el botón "Regresar"
+$es_local = ($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == '127.0.0.1');
+$ruta_base_publica = $es_local ? "/Delegacion_Ingenierias" : "";
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -20,7 +23,8 @@ if (isset($_SESSION['error_message'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Administración</title>
-    <link rel="stylesheet" href="../css/admin.css">
+    <!-- CORRECCIÓN: Ruta absoluta dinámica al CSS -->
+    <link rel="stylesheet" href="<?php echo $ruta_base_publica; ?>/css/admin.css">
 </head>
 <body>
     
@@ -47,7 +51,8 @@ if (isset($_SESSION['error_message'])) {
             <button type="submit" class="btn-login">Ingresar</button>
         </form>
         
-        <a href="../index.php" class="btn-regresar">
+        <!-- Enlace de regreso corregido -->
+        <a href="<?php echo $ruta_base_publica; ?>/index.php" class="btn-regresar">
             &larr; Regresar al sitio principal
         </a>
 
