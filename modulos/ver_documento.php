@@ -1,7 +1,7 @@
 <?php
     // 1. Conexión a MongoDB (subimos un nivel desde Modulos/)
     include '../includes/db_connect_mongo.php';
-    include '../includes/header.php';
+    
 
     // Inicializamos variables
     $doc = null;
@@ -53,7 +53,7 @@
     }
 
     // 3. Header (layouts)
-    include '../layouts/header.php';
+    include '../includes/header.php';
 ?>
 
 <main class="container-detalle">
