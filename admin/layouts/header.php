@@ -59,9 +59,9 @@ $user_rol = isset($_SESSION['user_rol']) ? trim($_SESSION['user_rol']) : 'Viewer
            class="<?php echo ($carpeta_actual == 'documentos') ? 'active' : ''; ?>">
            Documentos
         </a>
-        <a href="<?php echo $ruta_base_admin; ?>/contacto/gestionar_dmensajes.php" 
+        <a href="<?php echo $ruta_base_admin; ?>/contacto/gestionar_mensajes.php" 
            class="<?php echo ($carpeta_actual == 'contacto') ? 'active' : ''; ?>">
-           Mensaje
+           Mensajes
         </a>
         <a href="<?php echo $ruta_base_admin; ?>/soporte/gestionar_soporte.php" 
            class="<?php echo ($carpeta_actual == 'soporte') ? 'active' : ''; ?>">
